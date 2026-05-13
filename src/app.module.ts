@@ -9,6 +9,9 @@ import { ProvidersModule } from './providers/providers.module';
 import { Product } from './products/entities/product.entity';
 import { Employee } from './employees/entities/employee.entity';
 import { Provider } from './providers/entities/provider.entity';
+import { ManagersModule } from './managers/managers.module';
+import { LocationsModule } from './locations/locations.module';
+import { RegionsModule } from './regions/regions.module';
 
 @Module({
   imports: [
@@ -24,7 +27,7 @@ import { Provider } from './providers/entities/provider.entity';
       autoLoadEntities:true,
       synchronize: true,
   }),
-  EmployeesModule, ProductsModule, ProvidersModule],
+  EmployeesModule, ProductsModule, ProvidersModule, ManagersModule, LocationsModule, RegionsModule],
   controllers: [AppController],
   providers: [AppService],
 })
