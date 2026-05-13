@@ -31,11 +31,13 @@ export class ProductsService {
     return product;
 
   }
-  // findByProvider(id: string) {
-  //   const productFound = this.products.filter((product) => product.provider === id)
-  //   if(productFound.length ===0) throw new NotFoundException()
-  //     return productFound;
-  // }
+   findByProvider(id: string) {
+     return this.productRepository.findBy({
+      provider: {
+        providerId: id
+      }
+     })
+ }
 
  async update(id: string, UpdateProductDto: UpdateProductDto) {
    const productToUpdate = await this.productRepository.preload({
