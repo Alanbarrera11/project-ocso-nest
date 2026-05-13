@@ -15,8 +15,8 @@ export class EmployeesService {
  ){}
 
   async create(createEmployeeDto: CreateEmployeeDto) {
-    const employee =  await this.employeeRepository.save(createEmployeeDto)
-    return employee
+    const employee =   this.employeeRepository.create(createEmployeeDto)
+    return await this.employeeRepository.save(employee)
   }
 
   findAll() {

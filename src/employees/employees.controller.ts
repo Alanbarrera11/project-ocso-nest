@@ -21,6 +21,7 @@ export class EmployeesController {
   @Post('upload')
   @UseInterceptors(FileInterceptor('file'))
   uploadPhoto(@UploadedFile() file : Express.Multer.File){
+    console.log(file)
     return "ok";
   }
 
