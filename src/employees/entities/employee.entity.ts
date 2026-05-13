@@ -1,3 +1,4 @@
+import { text } from "stream/consumers";
 import {Column,Entity, PrimaryGeneratedColumn } from "typeorm"
 @Entity()
 export class Employee {
@@ -11,5 +12,9 @@ export class Employee {
     phoneNumber : string;
      @Column('text')
     email : string;
-
+    @Column({
+        type:'text',
+        nullable: true
+    })
+    photoUrl:string
 }

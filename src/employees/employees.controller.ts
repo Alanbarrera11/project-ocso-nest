@@ -1,7 +1,8 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, ParseUUIDPipe } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, ParseUUIDPipe, UseInterceptors, UploadedFile } from '@nestjs/common';
 import { EmployeesService } from './employees.service';
 import { CreateEmployeeDto } from './dto/create-employee.dto';
 import { UpdateEmployeeDto } from './dto/update-employee.dto';
+import { FileInterceptor } from '@nestjs/platform-express';
 
 @Controller('employees')
 export class EmployeesController {
@@ -17,7 +18,13 @@ export class EmployeesController {
     return this.employeesService.findAll();
   }
 
-  @Get(':id') //se manda el id dentro de una url
+  @Post('upload')
+  @UseInterceptors(FileInterceptor('file'))
+  uploadPhoto(@UploadedFile() file : Express.Multer.File){
+    return "ok";
+  }
+
+  @Get(':id') //se manda el id dentro de una urls
   findOne( //se busca ese id 
     @Param('id', new ParseUUIDPipe({version:'4'})) //con ese parametro
     id: string //se convierte en string y se almacena en esa variable
