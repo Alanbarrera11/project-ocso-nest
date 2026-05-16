@@ -1,5 +1,6 @@
 import { text } from "stream/consumers";
-import {Column,Entity, PrimaryGeneratedColumn } from "typeorm"
+import {Column,Entity, JoinColumn, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from "typeorm"
+import { Location } from "src/locations/entities/location.entity";
 @Entity()
 export class Employee {
     @PrimaryGeneratedColumn('uuid')
@@ -16,5 +17,12 @@ export class Employee {
         type:'text',
         nullable: true
     })
-    photoUrl:string
+    photoUrl:string;
+
+
+    @ManyToOne(()=> Location, (location)=> location.employees)
+    @JoinColumn({
+        name:"locationId"
+    })
+    location:Location;
 }
