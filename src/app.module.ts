@@ -12,6 +12,7 @@ import { Provider } from './providers/entities/provider.entity';
 import { ManagersModule } from './managers/managers.module';
 import { LocationsModule } from './locations/locations.module';
 import { RegionsModule } from './regions/regions.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -27,7 +28,7 @@ import { RegionsModule } from './regions/regions.module';
       autoLoadEntities:true,
       synchronize: true,
   }),
-  EmployeesModule, ProductsModule, ProvidersModule, ManagersModule, LocationsModule, RegionsModule],
+  EmployeesModule, ProductsModule, ProvidersModule, ManagersModule, LocationsModule, RegionsModule, AuthModule],
   controllers: [AppController],
   providers: [AppService],
 })
