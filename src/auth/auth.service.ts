@@ -25,8 +25,8 @@ async loginUser(createUserDto: CreateUserDto){
   if (!user) throw new UnauthorizedException("credenciales incorrectas")
   const match = await bcrypt.compare(createUserDto.userPassword, user.userPassword)
   if(!match) throw new UnauthorizedException("No estas autorizado");
-  const token = jwt.sign(JSON.stringify(user), "SECRET USER")
-  return ;
+  const token = jwt.sign({...User}, "SECRETKEY");
+  return token ;
 }
 
 
