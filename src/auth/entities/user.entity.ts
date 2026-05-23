@@ -1,5 +1,7 @@
 import { ServerResponse } from "http";
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Employee } from "src/employees/entities/employee.entity";
+import { Manager } from "src/managers/entities/manager.entity";
+import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
 
 
@@ -7,9 +9,22 @@ import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 export class User{
     @PrimaryGeneratedColumn('uuid')
     userId:string;
-    @Column('text')
+    @Column('text',{
+      unique:true
+    })
     userEmail: string;
     @Column('text')
     userPassword: string;
+  @Column('simple-array',{
+    default:'Employee'
+
+  })
+  userRoles: string[]
+  @OneToOne(()=> Manager)
+    manager:Manager;
+
+
+    @OneToOne(()=> Employee)
+  employee:Employee;
 
 }

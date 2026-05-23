@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Recurse -Filter \"*.ts\" \"C:\\\\Users\\\\matel_dz9n4r7\\\\Tallernodejs\\\\ocso-project\\\\src\")",
+      "Bash(Select-Object -ExpandProperty FullName)",
+      "Skill(anthropic-skills:pdf)",
+      "Skill(anthropic-skills:pdf:*)",
+      "Bash(python generar_guia.py)",
+      "Bash(pip install *)",
+      "Bash(dir \"C:\\\\Users\\\\matel_dz9n4r7\\\\Tallernodejs\\\\ocso-project\\\\Guia_NestJS_Backend.pdf\")"
+    ]
+  }
+}
